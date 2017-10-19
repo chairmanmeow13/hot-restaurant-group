@@ -88,7 +88,7 @@
 
     var currentURL = window.location.origin;
 
-    $.post(currentURL + "/api/table-reservations", newReservation,
+    $.post(currentURL + "/api/tables", newReservation,
         function(data){
 
             //tell user they are booked
@@ -96,7 +96,7 @@
                 alert("You are successfully booked.")
             }
 
-            // waiting list
+            //waiting list
             if(data == false){
                 alert("No tables available - you have been put on the wait list.")
             }
