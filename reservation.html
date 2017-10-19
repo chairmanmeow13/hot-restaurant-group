@@ -76,7 +76,39 @@
 
 <script type="javascript">
   $(".submit").on("click", function(){
-    var newReservation
+    var newReservation = {
+        customername: $("reserve_name").val().trim();
+        customerphone: $("reserve_phone").val().trim();
+        customeremail: $("reserve_email").val().trim();
+        customerID: $("reserve_uniqueID").val().trim();
+    };
+
+    console.log(newReservation);
+
+    var currentURL = window.location.origin;
+
+    $.post(currentURL + "/api/tables", newReservation,
+        function(data){
+
+            //tell user they are booked
+            if(data == true){
+                alert("You are successfully booked.")
+            }
+
+            // waiting list
+            if(data == false){
+                alert("No tables available - you have been put on the wait list.")
+            }
+
+            // Clear the form when submitting
+            $('#reserve_name').val("");
+            $('#reserve_phone').val("");
+            $('#reserve_email').val("");
+            $('#reserve_uniqueID').val("");
+
+        });
+
+return false;
   })  
 
 </script>
