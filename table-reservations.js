@@ -31,9 +31,9 @@ app.get('/reservation', function(req, res){
 app.post('/api/new', function(req, res){
     var newTable = req.body;
     console.log(newTable);
-    
+
     currentTables.push(newTable);
-    res.json(newTable);
+    // res.json(newTable);
 });
 
 
