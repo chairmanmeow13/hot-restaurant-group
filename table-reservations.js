@@ -1,9 +1,8 @@
-// call all requires
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 
-//set up express app 
 var app = express();
 var PORT = 3000;
 
@@ -18,26 +17,23 @@ currentTables = [];
 waitingTables = [];
 
 
-//MAKE ROUTES
-
+//ROUTES
 app.get('/', function(req, res){
-    res.sendFile(path.join(__dirname, "SOMETHING.html"));
+    res.sendFile(path.join(__dirname, "home.html"));
 });
-
-HOME RESERVATION AND VIEW
-// GET ROUTE FOR RESERVATION PAGE
-// GET ROUTE FOR LIST ONLINE
-
+app.get("/view", function(req, res){
+    res.sendFile(path.join(__dirname, "view.html"));
+});
+app.get('/reservation', function(req, res){
+    res.sendFile(path.join(__dirname, "reservation.html"));
+});
 
 //POST ROUTE TO THE RESERVATION LIST
-app.post('/api/new', function(req, res){
-    var newRes = req.body;
-    newres.routeName = newRes.name.replace(/\s+/g, "").toLowerCase();
-});
+
 
 
 //STARTING SERVER
-app.listen(port, function() {
-    console.log("App listening on PORT " + port);
+app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
   });
   
