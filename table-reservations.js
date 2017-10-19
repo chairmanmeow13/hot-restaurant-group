@@ -8,7 +8,6 @@ var PORT = 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 
@@ -29,7 +28,13 @@ app.get('/reservation', function(req, res){
 });
 
 //POST ROUTE TO THE RESERVATION LIST
-
+app.post('/api/new', function(req, res){
+    var newTable = req.body;
+    console.log(newTable);
+    
+    currentTables.push(newTable);
+    res.json(newTable);
+});
 
 
 //STARTING SERVER
