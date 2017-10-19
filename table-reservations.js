@@ -33,7 +33,10 @@ app.post('/api/new', function(req, res){
     console.log(newTable);
 
     currentTables.push(newTable);
-    // res.json(newTable);
+    res.json(newTable);
+});
+app.get('/api/tables', function(req, res){
+    res.json(currentTables);
 });
 
 
